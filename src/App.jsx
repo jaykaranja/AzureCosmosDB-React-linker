@@ -1,11 +1,9 @@
-import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import { AzureCosmos } from './cosmos/Client'
 
 function App() {
-
   
   return (
     <div className="App">
@@ -19,7 +17,7 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
-        <button onClick={AzureCosmos()}>
+        <button onClick={() => AzureCosmos()}>
           Create database
         </button>
         <p>
