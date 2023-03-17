@@ -34,9 +34,9 @@ export async function AzureCosmos() {
     // This piece of code inserts items into Azure CosmosDB
 
     const cities = [
-        { id: "1", name: "Olympia", state: "WA", isCapitol: true },
-        { id: "2", name: "Redmond", state: "WA", isCapitol: false },
-        { id: "3", name: "Chicago", state: "IL", isCapitol: false }
+        { id: "1", name: "Olympia", state: "WA", isCapital: true },
+        { id: "2", name: "Redmond", state: "WA", isCapital: false },
+        { id: "3", name: "Chicago", state: "IL", isCapital: false }
       ];
 
       for (const city of cities) {
@@ -64,7 +64,7 @@ export async function AzureCosmos() {
     .fetchAll();
 
     for (const city of resources) {
-        console.log(`${city.name}, ${city.state} is a capitol `);
+        console.log(`${city.name}, ${city.state} is a capital `);
     }
 
     // End of code
@@ -73,13 +73,13 @@ export async function AzureCosmos() {
 
     const { data } = await container.items
     .query({
-        query: "SELECT * from c WHERE c.isCapitol = @isCapitol",
+        query: "SELECT * from c WHERE c.isCapital = @isCapital",
         parameters: [{ name: "@isCapitol", value: true }]
     })
     .fetchAll();
     
     for (const city of data) {
-    console.log(`${city.name}, ${city.state} is a capitol `);
+    console.log(`${city.name}, ${city.state} is a capital `);
     }
 
     // End of code
