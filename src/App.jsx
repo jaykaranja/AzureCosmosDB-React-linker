@@ -3,8 +3,12 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import { AzureCosmos } from './cosmos/Client'
 
-function App() {
+const App = () => {
   
+  const handleClick = () => {
+    AzureCosmos();
+  }
+
   return (
     <div className="App">
       <div>
@@ -17,8 +21,8 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
-        <button onClick={() => AzureCosmos()}>
-          Create database
+        <button onClick={handleClick}>
+          Run Function
         </button>
         <p>
           Edit <code>src/App.jsx</code> and save to test HMR
