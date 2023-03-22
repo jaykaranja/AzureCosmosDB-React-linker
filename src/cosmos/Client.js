@@ -19,14 +19,14 @@ const client = new CosmosClient({ endpoint, key });
 export const AzureCosmos = async() => {
     // This piece of code creates a database on Azure CosmosDB
 
-    const { database } = await client.databases.createIfNotExists({ id: "purchaseorderitems" });
+    const { database } = await client.databases.createIfNotExists({ id: "cosmostests" });
     console.log(database.id);
 
     // End of code
 
     // This piece of code creates a container on Azure CosmosDB
 
-    const { container } = await database.containers.createIfNotExists({ id: "orderitems" });
+    const { container } = await database.containers.createIfNotExists({ id: "newitems" });
     console.log(container.id);
 
     // End of code
@@ -42,6 +42,8 @@ export const AzureCosmos = async() => {
     //   for (const city of cities) {
     //     await container.items.create(city);
     //   }
+
+    //   console.log("Done");
 
     // End of code
 
@@ -85,7 +87,3 @@ export const AzureCosmos = async() => {
     // End of code
 }
 
-// Error catching is done here
-AzureCosmos().catch((error) => {
-  console.error(error);
-});
