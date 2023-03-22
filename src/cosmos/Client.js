@@ -19,68 +19,68 @@ const client = new CosmosClient({ endpoint, key });
 export const AzureCosmos = async() => {
     // This piece of code creates a database on Azure CosmosDB
 
-    const { database } = await client.databases.createIfNotExists({ id: "example" });
+    const { database } = await client.databases.createIfNotExists({ id: "purchaseorderitems" });
     console.log(database.id);
 
     // End of code
 
     // This piece of code creates a container on Azure CosmosDB
 
-    const { container } = await database.containers.createIfNotExists({ id: "Test Database" });
+    const { container } = await database.containers.createIfNotExists({ id: "orderitems" });
     console.log(container.id);
 
     // End of code
 
     // This piece of code inserts items into Azure CosmosDB
 
-    const cities = [
-        { id: "1", name: "Olympia", state: "WA", isCapital: true },
-        { id: "2", name: "Redmond", state: "WA", isCapital: false },
-        { id: "3", name: "Chicago", state: "IL", isCapital: false }
-      ];
+    // const cities = [
+    //     { id: "1", name: "Olympia", state: "WA", isCapital: true },
+    //     { id: "2", name: "Redmond", state: "WA", isCapital: false },
+    //     { id: "3", name: "Chicago", state: "IL", isCapital: false }
+    //   ];
 
-      for (const city of cities) {
-        await container.items.create(city);
-      }
+    //   for (const city of cities) {
+    //     await container.items.create(city);
+    //   }
 
     // End of code
 
     // This piece of code reads an item from  Azure CosmosDB
 
-    await container.item("1").read();
+    // await container.item("1").read();
 
-    // End of code
+    // // End of code
 
-    // This piece of code deletes first item returned on Azure CosmosDB
+    // // This piece of code deletes first item returned on Azure CosmosDB
 
-    await container.item("1").delete();
+    // await container.item("1").delete();
 
     // End of code
 
     // This piece of code queries the DB on Azure CosmosDB
 
-    const { resources } = await container.items
-    .query("SELECT * from c WHERE c.isCapitol = true")
-    .fetchAll();
+    // const { resources } = await container.items
+    // .query("SELECT * from c WHERE c.isCapitol = true")
+    // .fetchAll();
 
-    for (const city of resources) {
-        console.log(`${city.name}, ${city.state} is a capital `);
-    }
+    // for (const city of resources) {
+    //     console.log(`${city.name}, ${city.state} is a capital `);
+    // }
 
     // End of code
 
     // This piece of code performs parameterized queries on Azure CosmosDB
 
-    const { data } = await container.items
-    .query({
-        query: "SELECT * from c WHERE c.isCapital = @isCapital",
-        parameters: [{ name: "@isCapitol", value: true }]
-    })
-    .fetchAll();
+    // const { data } = await container.items
+    // .query({
+    //     query: "SELECT * from c WHERE c.isCapital = @isCapital",
+    //     parameters: [{ name: "@isCapitol", value: true }]
+    // })
+    // .fetchAll();
     
-    for (const city of data) {
-    console.log(`${city.name}, ${city.state} is a capital `);
-    }
+    // for (const city of data) {
+    // console.log(`${city.name}, ${city.state} is a capital `);
+    // }
 
     // End of code
 }
