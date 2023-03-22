@@ -8,10 +8,10 @@ import { CosmosClient } from "@azure/cosmos"
 // Declaring the environment variables
 
 // This is your Azure CosmosDB account URI link
-const endpoint = "{URI goes here}";
+const endpoint = "URI goes here";
 
 // This is the primary key to your Azure CosmosDB account
-const key = "{Private key goes here}";
+const key = "Private key goes here";
 
 // Instantiating a CosmosClient object
 const client = new CosmosClient({ endpoint, key });
